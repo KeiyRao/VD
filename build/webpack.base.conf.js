@@ -23,14 +23,18 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js$/, use: "babel-loader", exclude: /node_modules/ },
-      { test: /\.(png|svg|jpg|gif|woff|woff2|eot|otf)$/, use: ["file-loader"] },
+      {
+        test: /\.(png|svg|jpg|gif|woff|woff2|eot|otf|ttf)$/,
+        use: ["file-loader"],
+      },
       { test: /\.vue$/, loader: "vue-loader" },
       {
-        test: /\.css$/,
+        test: /\.(css|less)$/,
         use: [
-          // "vue-style-loader",
+          "vue-style-loader",
           MiniCssExtractPlugin.loader,
           "css-loader",
+          "less-loader",
           "postcss-loader",
         ],
       },

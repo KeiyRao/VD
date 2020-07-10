@@ -1,11 +1,16 @@
 <template>
-  <div id="test">{{text}}</div>
+  <v-layout></v-layout>
 </template>
 
 <script>
+import Layout from "./layout";
+
 export default {
   name: "App",
+
+  components: { "v-layout": Layout },
   data() {
+    console.log(this);
     return {
       text: "hello VUE world3"
     };
@@ -14,8 +19,4 @@ export default {
 </script>
 
 <style>
-#test {
-  color: #f40;
-  font-size: 16px;
-}
 </style>
