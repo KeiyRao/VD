@@ -2,9 +2,8 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
-const AutoDllPlugin = require("autodll-webpack-plugin");
+// const AutoDllPlugin = require("autodll-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-console.log(HtmlWebpackPlugin);
 
 module.exports = {
   entry: {
@@ -44,17 +43,18 @@ module.exports = {
       title: "VD",
       template: path.resolve(__dirname, "../index.html"),
     }),
+
+    // new AutoDllPlugin({
+    //   inject: true,
+    //   debug: true,
+    //   filename: "[name]_[hash].js",
+    //   path: "./dll",
+    //   context: path.join(__dirname, ".."),
+    //   entry: {
+    //     vendor: ["vue", "vue-router", "vuex"],
+    //   },
+    // }),
     new VueLoaderPlugin(),
-    new AutoDllPlugin({
-      inject: true,
-      debug: true,
-      filename: "[name]_[hash].js",
-      path: "/dll",
-      context: path.resolve(__dirname, "./"),
-      entry: {
-        vendor: ["vue", "vue-router", "vuex"],
-      },
-    }),
     new webpack.optimize.SplitChunksPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
